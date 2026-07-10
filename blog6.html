@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog 6 – Ethics & Social Dimensions – EN8905 Solar Blog</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a1628; color: #e2e8f0; line-height: 1.7; }
+nav { background: #0f2040; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; border-bottom: 2px solid #1e3a6e; position: sticky; top: 0; z-index: 100; }
+nav .brand { color: #F59E0B; font-weight: 700; font-size: 1rem; }
+nav .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 1.4rem; font-size: 0.85rem; transition: color .2s; }
+nav .nav-links a:hover { color: #F59E0B; }
+.hero { background: linear-gradient(135deg, #0f2040 0%, #1a3a0e 50%, #2d4e0e 100%); padding: 4rem 2rem 3rem; text-align: center; border-bottom: 3px solid #F59E0B; }
+.hero .tag { display: inline-block; background: #1e3a0e; color: #F59E0B; font-size: 0.78rem; font-weight: 700; letter-spacing: .1em; padding: .3rem .9rem; border-radius: 20px; margin-bottom: 1rem; text-transform: uppercase; }
+.hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); color: #f0f9ff; margin-bottom: .8rem; }
+.hero .subtitle { color: #86efac; font-size: 1rem; max-width: 680px; margin: 0 auto 1.2rem; }
+.hero .meta { color: #64748b; font-size: 0.82rem; }
+main { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+.section-card { background: #0f2040; border: 1px solid #1e3a6e; border-radius: 12px; padding: 2rem; margin-bottom: 2rem; }
+.section-card h2 { color: #F59E0B; font-size: 1.3rem; margin-bottom: 1rem; padding-bottom: .5rem; border-bottom: 1px solid #1e3a6e; }
+.section-card h3 { color: #86efac; font-size: 1.05rem; margin: 1.2rem 0 .5rem; }
+.section-card p { color: #cbd5e1; margin-bottom: .9rem; }
+.section-card ul, .section-card ol { padding-left: 1.4rem; color: #cbd5e1; margin-bottom: .9rem; }
+.section-card li { margin-bottom: .4rem; }
+.callout { border-left: 4px solid #F59E0B; background: #0a1e40; padding: 1rem 1.2rem; border-radius: 0 8px 8px 0; margin: 1rem 0; }
+.callout.success { border-color: #22c55e; }
+.callout.danger  { border-color: #ef4444; }
+.callout.warning { border-color: #f59e0b; }
+.callout strong  { color: #f0f9ff; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .88rem; }
+th { background: #1e3a0e; color: #86efac; padding: .65rem .9rem; text-align: left; font-weight: 600; }
+td { padding: .6rem .9rem; border-bottom: 1px solid #1a2e50; color: #cbd5e1; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #0e2040; }
+.good { color: #22c55e; font-weight: 600; }
+.bad  { color: #ef4444; font-weight: 600; }
+.mid  { color: #f59e0b; font-weight: 600; }
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 1.2rem 0; }
+.stat-card { background: #0a1e40; border: 1px solid #1e3a6e; border-radius: 10px; padding: 1.1rem; text-align: center; }
+.stat-card .num { font-size: 1.8rem; font-weight: 700; color: #F59E0B; }
+.stat-card .unit { font-size: .75rem; color: #64748b; margin-top: .1rem; }
+.stat-card .label { font-size: .82rem; color: #94a3b8; margin-top: .3rem; }
+.sdg-badge { display: inline-flex; align-items: center; gap: .5rem; background: #1a3020; border: 1px solid #F59E0B; padding: .4rem 1rem; border-radius: 20px; margin: .3rem; font-size: .85rem; color: #86efac; font-weight: 600; }
+.evidence { background: #071428; border: 2px dashed #1e3a6e; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; font-size: .88rem; color: #64748b; }
+.evidence strong { color: #F59E0B; }
+.quiz-q { background: #0a1e40; border-radius: 8px; padding: 1rem 1.2rem; margin: .8rem 0; }
+.quiz-q .q-text { color: #f0f9ff; font-weight: 600; margin-bottom: .5rem; }
+.quiz-q .answer { color: #22c55e; font-size: .9rem; }
+.bar-chart { margin: 1rem 0; }
+.bar-row { display: flex; align-items: center; margin: .5rem 0; gap: .8rem; }
+.bar-row .bl { width: 130px; font-size: .82rem; color: #94a3b8; text-align: right; flex-shrink:0; }
+.bar-row .bf { height: 22px; border-radius: 4px; display:flex; align-items:center; padding-left: .5rem; font-size:.78rem; font-weight:600; color:#fff; }
+.stage-pill { background:#1e3a0e; color:#F59E0B; font-size:.75rem; font-weight:700; letter-spacing:.08em; padding:.25rem .8rem; border-radius:20px; text-transform:uppercase; display:inline-block; margin-bottom:.8rem; }
+footer { background: #0f2040; border-top: 1px solid #1e3a6e; text-align: center; padding: 1.5rem; color: #475569; font-size: .82rem; margin-top: 3rem; }
+footer a { color: #F59E0B; text-decoration: none; }
+</style>
+</head>
+<body>
+<nav><span class="brand">☀️ SolarVsFossil · EN8905</span><div class="nav-links"><a href="index.html">Home</a><a href="blog1.html">1·SDG Research</a><a href="blog2.html">2·Solar Context</a><a href="blog3.html">3·Fossil Fuel</a><a href="blog4.html">4·Solar PV</a><a href="blog5.html">5·Practical</a><a href="blog6.html">6·Ethics</a><a href="blog7.html">7·Awareness</a><a href="blog8.html">8·Reflection</a></div></nav>
+
+<div class="hero">
+  <div class="tag">Blog Entry 6 · Stage 4 – Ethical &amp; Social Dimensions</div>
+  <h1>Ethical Responsibilities &amp; Social Dimensions<br>of the Solar Energy Transition</h1>
+  <p class="subtitle">Who benefits, who bears the cost, and what engineering ethics demands</p>
+  <p class="meta">Posted: 6 July 2026 &nbsp;·&nbsp; Fahad Yousif Buradah</p>
+</div>
+<main>
+  <div class="section-card">
+    <span class="stage-pill">Stage 4 — Ethics &amp; Social Dimensions</span>
+    <h2>Ethical Framework: IEEE Code of Ethics</h2>
+    <p>As an electrical engineer, I reference the <strong>IEEE Code of Ethics</strong> — holding paramount the safety, health, and welfare of the public, contributing to sustainable development, and being honest in technical assessments. I also draw on the <strong>UN Engineers Without Borders ethical framework</strong> emphasising equity and do-no-harm.</p>
+    <h2>Ethical Trade-offs in the Solar Transition</h2>
+    <table>
+      <tr><th>Ethical Issue</th><th>Fossil Fuel (Status Quo)</th><th>Solar PV (Transition)</th></tr>
+      <tr><td>Climate justice</td><td class="bad">Continues emissions harming vulnerable populations globally</td><td class="good">Reduces Bahrain's per-capita emissions — one of world's highest</td></tr>
+      <tr><td>Energy affordability</td><td class="mid">Currently subsidised — low end-user cost</td><td class="good">Solar LCOE $0.022/kWh — already cheapest electricity source</td></tr>
+      <tr><td>Land use</td><td class="good">Compact power plants</td><td class="mid">Large land area needed — agrivoltaics (solar + farming) as solution</td></tr>
+      <tr><td>Water use</td><td class="bad">1.8 L/kWh cooling — critical in water-scarce Gulf</td><td class="good">~0.03 L/kWh panel cleaning — 98% water saving</td></tr>
+      <tr><td>Worker transition</td><td class="mid">Existing fossil fuel jobs at risk</td><td class="good">Solar creates 5× more jobs per MW than gas (IRENA)</td></tr>
+      <tr><td>Energy poverty (global)</td><td class="bad">Fossil fuel inaccessible for 733M off-grid poor</td><td class="good">Off-grid solar directly addresses SDG 7.1 access goal</td></tr>
+    </table>
+    <h2>Who Is Affected?</h2>
+    <h3>Locally (Bahrain)</h3>
+    <ul>
+      <li><strong>Households:</strong> Solar reduces electricity bills — AC accounts for ~70% of Bahrain residential bills in summer</li>
+      <li><strong>Industrial users (SABIC):</strong> Lower LCOE solar reduces operating costs for energy-intensive industries</li>
+      <li><strong>Low-income households:</strong> Require subsidised rooftop solar installation to benefit — equity design essential</li>
+      <li><strong>Fossil fuel workers:</strong> Retraining programme needed — electrical and mechanical skills transfer directly to solar O&amp;M</li>
+    </ul>
+    <h3>Globally</h3>
+    <ul>
+      <li><strong>Climate-vulnerable nations:</strong> Every tonne of CO₂ Bahrain avoids reduces global warming harm to Pacific islands, Bangladesh, and sub-Saharan Africa</li>
+      <li><strong>Energy-poor communities:</strong> Off-grid solar is the only affordable electrification solution for the final 733 million</li>
+    </ul>
+    <div class="callout warning"><strong>Agrivoltaics — the Land-Use Solution:</strong> Combining solar panels with agriculture (agrivoltaics) solves the land-use ethical dilemma. Shade from panels reduces crop water stress by 30% in hot climates — highly relevant for Bahrain's food security.</div>
+    <div class="callout success"><strong>Ethical Conclusion:</strong> The solar transition is ethically imperative under IEEE ethics. Key requirements: progressive tariff design protecting low-income users, worker retraining programmes, agrivoltaic deployment for food security, and transparent public communication of benefits.</div>
+  </div><div style="display:flex;gap:1rem;justify-content:flex-end;margin-top:1rem;"><a href="blog5.html" style="color:#F59E0B;font-size:.9rem;">← Blog 5</a><a href="blog7.html" style="color:#F59E0B;font-size:.9rem;">Blog 7 →</a></div></main>
+<footer>EN8905 – Energy, Environment &amp; Sustainability &nbsp;·&nbsp; Bahrain Polytechnic &nbsp;·&nbsp; Fahad Yousif Buradah &nbsp;·&nbsp; July 2026<br>SDG 7 – Clean Energy | Solar PV vs. Fossil-Fuel Power</footer>
+</body>
+</html>
