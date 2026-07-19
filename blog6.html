@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog 6 – Ethics & Social Dimensions – EN8905 Solar Blog</title>
+<style>
+/* ============================================================
+   SolarVsFossil — "Field Notebook" design system
+   Blueprint grid + drafting title-block + dimension-line stats
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --ink:#0B1C2C;
+  --panel:#122A40;
+  --panel-2:#0E2236;
+  --grid-line:#22415C;
+  --amber:#F2A93B;
+  --coral:#E8572E;
+  --mint:#4FBE8C;
+  --paper:#F3EFE6;
+  --muted:#93ABC2;
+  --muted-2:#5E7994;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'IBM Plex Sans',Arial,sans-serif;
+  background:
+    linear-gradient(var(--ink),var(--ink)),
+    repeating-linear-gradient(0deg, rgba(70,120,160,0.07) 0px, rgba(70,120,160,0.07) 1px, transparent 1px, transparent 32px),
+    repeating-linear-gradient(90deg, rgba(70,120,160,0.07) 0px, rgba(70,120,160,0.07) 1px, transparent 1px, transparent 32px);
+  color:var(--paper);
+  line-height:1.7;
+}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif; letter-spacing:-0.01em;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+
+/* ---- NAV ---- */
+nav{
+  background:var(--panel-2);
+  border-bottom:1px solid var(--grid-line);
+  padding:0 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:58px;position:sticky;top:0;z-index:100;
+}
+nav .brand{color:var(--amber);font-weight:700;font-family:'Space Grotesk',sans-serif;font-size:1rem;display:flex;align-items:center;gap:.5rem;}
+nav .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--mint);display:inline-block;}
+nav .nav-links{display:flex;flex-wrap:wrap;gap:0;}
+nav .nav-links a{
+  color:var(--muted);text-decoration:none;margin-left:.2rem;font-size:.78rem;
+  font-family:'IBM Plex Mono',monospace;
+  padding:.35rem .6rem;border-radius:4px;transition:.15s;
+}
+nav .nav-links a:hover{color:var(--ink);background:var(--amber);}
+nav .nav-links a.active{color:var(--ink);background:var(--amber);font-weight:600;}
+nav .nav-links .current-page{
+  color:var(--amber);font-family:'IBM Plex Mono',monospace;font-size:.8rem;
+  font-weight:600;padding:.35rem .6rem;
+}
+
+/* ---- HERO ---- */
+.hero{
+  position:relative;
+  padding:3.2rem 1.5rem 2.4rem;
+  border-bottom:2px solid var(--amber);
+  background:linear-gradient(180deg, rgba(18,42,64,0.9), rgba(11,28,44,0.4));
+  overflow:hidden;
+}
+.hero-inner{max-width:920px;margin:0 auto;position:relative;}
+.hero .eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.12em;
+  color:var(--amber);text-transform:uppercase;border:1px solid var(--amber);
+  padding:.3rem .8rem;border-radius:2px;margin-bottom:1.1rem;
+}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);color:var(--paper);margin-bottom:.7rem;font-weight:700;}
+.hero .subtitle{color:var(--mint);font-size:1.02rem;max-width:640px;margin-bottom:.8rem;}
+.hero .meta{color:var(--muted-2);font-size:.8rem;font-family:'IBM Plex Mono',monospace;}
+
+/* ---- MAIN / CARDS ---- */
+main{max-width:920px;margin:0 auto;padding:2.2rem 1.4rem 3rem;}
+.card{
+  background:var(--panel);border:1px solid var(--grid-line);border-radius:6px;
+  padding:1.8rem 1.9rem;margin-bottom:1.8rem;position:relative;
+}
+.card::before{
+  content:"";position:absolute;left:0;top:1.4rem;bottom:1.4rem;width:3px;
+  background:var(--amber);border-radius:0 2px 2px 0;
+}
+.card{padding-left:2.1rem;}
+.card h2{color:var(--amber);font-size:1.22rem;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px dashed var(--grid-line);}
+.card h3{color:var(--mint);font-size:1rem;margin:1.2rem 0 .5rem;}
+.card p{color:#D9E4EE;margin-bottom:.9rem;}
+.card ul,.card ol{padding-left:1.4rem;color:#D9E4EE;margin-bottom:.9rem;}
+.card li{margin-bottom:.45rem;}
+.stage-pill{
+  display:inline-block;background:transparent;color:var(--amber);
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.1em;
+  padding:.25rem 0;text-transform:uppercase;margin-bottom:.8rem;border-bottom:2px solid var(--amber);
+}
+
+/* ---- CALLOUTS ---- */
+.callout{border-left:3px solid var(--amber);background:var(--panel-2);padding:1rem 1.2rem;border-radius:0 6px 6px 0;margin:1rem 0;}
+.callout.success{border-color:var(--mint);}
+.callout.danger{border-color:var(--coral);}
+.callout strong{color:var(--paper);}
+
+/* ---- TABLES ---- */
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.86rem;}
+th{background:var(--panel-2);color:var(--mint);padding:.6rem .8rem;text-align:left;font-weight:600;font-family:'IBM Plex Mono',monospace;font-size:.76rem;letter-spacing:.03em;border-bottom:2px solid var(--grid-line);}
+td{padding:.6rem .8rem;border-bottom:1px solid var(--grid-line);color:#D9E4EE;vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+.good{color:var(--mint);font-weight:600;}
+.bad{color:var(--coral);font-weight:600;}
+.mid{color:var(--amber);font-weight:600;}
+
+/* ---- DIMENSION-LINE STATS ---- */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin:1.3rem 0;}
+.stat-card{
+  background:var(--panel-2);border:1px solid var(--grid-line);border-radius:4px;
+  padding:1rem .8rem .9rem;text-align:center;position:relative;
+}
+.stat-card::before,.stat-card::after{content:"";position:absolute;top:8px;bottom:8px;width:1px;background:var(--grid-line);}
+.stat-card::before{left:6px;}
+.stat-card::after{right:6px;}
+.stat-card .num{font-family:'IBM Plex Mono',monospace;font-size:1.7rem;font-weight:600;color:var(--amber);}
+.stat-card .unit{font-size:.7rem;color:var(--muted-2);margin-top:.1rem;font-family:'IBM Plex Mono',monospace;}
+.stat-card .label{font-size:.78rem;color:var(--muted);margin-top:.3rem;}
+
+/* ---- PHOTO ---- */
+.photo{margin:1.2rem 0;border-radius:6px;overflow:hidden;border:1px solid var(--grid-line);}
+.photo img{width:100%;display:block;max-height:420px;object-fit:cover;}
+.photo .cap{background:var(--panel-2);padding:.55rem .9rem;font-size:.74rem;color:var(--muted-2);font-family:'IBM Plex Mono',monospace;}
+.photo .cap a{color:var(--muted);}
+
+/* ---- EVIDENCE / QUIZ ---- */
+.evidence{background:#081627;border:1px dashed var(--grid-line);border-radius:6px;padding:1.1rem;margin:1rem 0;font-size:.86rem;color:var(--muted-2);}
+.evidence strong{color:var(--amber);}
+.quiz-q{background:var(--panel-2);border-radius:6px;padding:1rem 1.2rem;margin:.8rem 0;border:1px solid var(--grid-line);}
+.quiz-q .q-text{color:var(--paper);font-weight:600;margin-bottom:.5rem;}
+.quiz-q .answer{color:var(--mint);font-size:.9rem;}
+
+/* ---- BAR CHART ---- */
+.bar-chart{margin:1.2rem 0;}
+.bar-chart .chart-title{color:var(--mint);font-size:.86rem;margin-bottom:.9rem;font-weight:600;font-family:'IBM Plex Mono',monospace;}
+.bar-row{display:flex;align-items:center;margin:.55rem 0;gap:.8rem;}
+.bar-row .bl{width:150px;font-size:.78rem;color:var(--muted);text-align:right;flex-shrink:0;font-family:'IBM Plex Mono',monospace;}
+.bar-row .track{flex:1;background:var(--panel-2);border-radius:4px;overflow:hidden;border:1px solid var(--grid-line);}
+.bar-row .bf{height:24px;display:flex;align-items:center;padding-left:.6rem;font-size:.74rem;font-weight:600;color:#06131F;font-family:'IBM Plex Mono',monospace;white-space:nowrap;}
+
+/* ---- SDG BADGE ---- */
+.sdg-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--panel-2);border:1px solid var(--amber);padding:.4rem 1rem;border-radius:20px;margin:.3rem .3rem 0 0;font-size:.83rem;color:var(--mint);font-weight:600;}
+
+/* ---- FOOTER NAV ARROWS ---- */
+.post-nav{display:flex;gap:1rem;justify-content:flex-end;margin-top:.4rem;font-family:'IBM Plex Mono',monospace;font-size:.85rem;}
+.post-nav a{color:var(--amber);text-decoration:none;padding:.4rem .7rem;border:1px solid var(--grid-line);border-radius:4px;}
+.post-nav a:hover{background:var(--amber);color:var(--ink);}
+
+/* ---- SOURCES ---- */
+.sources{font-size:.78rem;color:var(--muted-2);border-top:1px dashed var(--grid-line);padding-top:1rem;margin-top:1.4rem;}
+.sources li{margin-bottom:.4rem;}
+
+footer{background:var(--panel-2);border-top:1px solid var(--grid-line);text-align:center;padding:1.6rem;color:var(--muted-2);font-size:.8rem;margin-top:2rem;font-family:'IBM Plex Mono',monospace;}
+footer a{color:var(--amber);text-decoration:none;}
+
+@media(max-width:640px){
+  .hero{padding-top:2.4rem;}
+  .card{padding:1.4rem;padding-left:1.6rem;}
+}
+
+</style>
+</head>
+<body>
+<nav><span class="brand"><span class="dot"></span>SolarVsFossil · EN8905</span><div class="nav-links"><span class="current-page">6·Ethics</span></div></nav>
+<div class="hero"><div class="hero-inner">
+  <div class="eyebrow">Blog Entry 6 &middot; Stage 4 &ndash; Ethical &amp; Social Dimensions</div>
+  <h1>Ethical Responsibilities &amp; Social Dimensions<br>of the Solar Energy Transition</h1>
+  <p class="subtitle">Who benefits, who bears the cost, and what engineering ethics demands</p>
+  <p class="meta">Posted: 6 July 2026 &nbsp;&middot;&nbsp; Fahad Yousif Buradah</p>
+</div></div>
+<main>
+
+<div class="card">
+  <span class="stage-pill">Stage 4 — Ethics &amp; Social Dimensions</span>
+  <h2>Ethical Framework: IEEE Code of Ethics</h2>
+  <p>As an electrical engineering student, I reference the <strong>IEEE Code of Ethics</strong> &ndash; holding paramount the safety, health and welfare of the public, disclosing factors that might endanger it, and being honest and realistic in technical claims. That last principle is exactly why Blog 2 and Blog 5 openly correct and flag figures I could not verify, rather than presenting convenient numbers as fact.</p>
+  <h2>Ethical Trade-offs in the Solar Transition</h2>
+  <table>
+    <tr><th>Ethical Issue</th><th>Natural Gas (Status Quo)</th><th>Solar PV (Transition)</th></tr>
+    <tr><td>Climate responsibility</td><td class="bad">Continues significant per-kWh emissions from a grid that is almost entirely gas-fired</td><td class="good">Directly reduces Bahrain&rsquo;s per-capita power-sector emissions</td></tr>
+    <tr><td>Energy affordability</td><td class="mid">Currently subsidised; end-user cost is low but tied to global gas markets</td><td class="good">Global solar LCOE already below the cheapest new fossil-fuel alternative (IRENA, 2024)</td></tr>
+    <tr><td>Land use</td><td class="good">Compact plants relative to output</td><td class="mid">Utility-scale solar needs significant land area; agrivoltaics (combining solar with agriculture) is one proposed mitigation</td></tr>
+    <tr><td>Reliability equity</td><td class="good">Despatchable 24/7 &ndash; keeps critical loads (hospitals, cooling) running at night</td><td class="bad">Daylight-only output means solar alone cannot yet guarantee equal reliability without storage/backup</td></tr>
+    <tr><td>Worker transition</td><td class="mid">Existing gas-sector jobs and skills are concentrated here today</td><td class="good">Electrical and mechanical skills used in gas plants transfer directly to solar installation and O&amp;M roles</td></tr>
+    <tr><td>Global energy poverty</td><td class="bad">Centralised fossil generation does little for the 655 million people still without electricity access worldwide</td><td class="good">Off-grid and mini-grid solar is a direct, low-cost tool for SDG 7.1 (universal access)</td></tr>
+  </table>
+  <h2>Who Is Affected?</h2>
+  <h3>Locally (Bahrain)</h3>
+  <ul>
+    <li><strong>Households:</strong> air conditioning is the single largest residential electricity load (my own audit in Blog 5 found it at 82% of household consumption) &ndash; so efficiency and solar rooftop measures matter directly to bills</li>
+    <li><strong>Low-income households:</strong> need well-designed subsidy or financing schemes to benefit from rooftop solar, not just households that can pay upfront</li>
+    <li><strong>Workers in the gas sector:</strong> a fair transition means genuine retraining pathways into solar O&amp;M, not just displacement</li>
+  </ul>
+  <h3>Globally</h3>
+  <ul>
+    <li><strong>Climate-vulnerable countries:</strong> every tonne of CO&#8322; avoided in high-income, high-consumption countries like Bahrain reduces cumulative global warming that falls hardest on low-emitting, vulnerable nations</li>
+    <li><strong>The 655 million without electricity access:</strong> the same falling solar costs that help Bahrain also make off-grid electrification newly affordable elsewhere</li>
+  </ul>
+  <div class="photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Chanani%20Ladell%20Agrivoltaic%20Field%20Bar%20Ilan%202022.jpg" alt="Agrivoltaic field combining solar panels and crops" loading="lazy">
+  <div class="cap">Agrivoltaic installation combining solar panels with agriculture</div>
+</div>
+  <div class="callout warning" style="border-color:var(--mint);"><strong>Agrivoltaics &ndash; a real land-use mitigation:</strong> Combining solar panels with agriculture (agrivoltaics) is an active area of research and deployment worldwide, and is one credible way to reduce the land-use trade-off of utility-scale solar in a small, dense country like Bahrain &ndash; though I have not found a confirmed agrivoltaic project operating in Bahrain specifically, so this remains a recommendation rather than a documented local example.</div>
+  <div class="callout success"><strong>Ethical Conclusion:</strong> Under IEEE ethics, honest disclosure of technical uncertainty is itself an ethical duty. On that basis, the solar transition is well justified on climate and equity grounds, but a genuinely ethical transition plan needs: progressive tariff/financing design so low-income households actually benefit, real worker retraining programmes, and transparent, verifiable public communication of costs and benefits &ndash; not just favourable headline figures.</div>
+  <ul class="sources">
+    <li><strong>Sources:</strong></li>
+    <li>IEEE (2020). <em>IEEE Code of Ethics.</em></li>
+    <li>IEA/IRENA/UNSD/World Bank/WHO (2025). <em>Tracking SDG 7: The Energy Progress Report 2025</em> &ndash; global electricity access figures.</li>
+    <li>Author&rsquo;s own home energy audit (Blog 5) &ndash; AC share of household load.</li>
+  </ul>
+</div>
+<div class="post-nav"><a href="blog5.html">&larr; Blog 5</a><a href="blog7.html">Blog 7 &rarr;</a></div>
+
+</main>
+<footer>EN8905 – Energy, Environment &amp; Sustainability &nbsp;·&nbsp; Bahrain Polytechnic &nbsp;·&nbsp; Fahad Yousif Buradah &nbsp;·&nbsp; July 2026<br>SDG 7 – Clean Energy | Solar PV vs. Fossil-Fuel Power in Bahrain</footer>
+</body>
+</html>
