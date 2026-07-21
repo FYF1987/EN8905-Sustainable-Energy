@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog 5 – Practical Activity – EN8905 Solar Blog</title>
+<style>
+/* ============================================================
+   SolarVsFossil — "Field Notebook" design system
+   Blueprint grid + drafting title-block + dimension-line stats
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --ink:#0B1C2C;
+  --panel:#122A40;
+  --panel-2:#0E2236;
+  --grid-line:#22415C;
+  --amber:#F2A93B;
+  --coral:#E8572E;
+  --mint:#4FBE8C;
+  --paper:#F3EFE6;
+  --muted:#93ABC2;
+  --muted-2:#5E7994;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'IBM Plex Sans',Arial,sans-serif;
+  background:
+    linear-gradient(var(--ink),var(--ink)),
+    repeating-linear-gradient(0deg, rgba(70,120,160,0.07) 0px, rgba(70,120,160,0.07) 1px, transparent 1px, transparent 32px),
+    repeating-linear-gradient(90deg, rgba(70,120,160,0.07) 0px, rgba(70,120,160,0.07) 1px, transparent 1px, transparent 32px);
+  color:var(--paper);
+  line-height:1.7;
+}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif; letter-spacing:-0.01em;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+
+/* ---- NAV ---- */
+nav{
+  background:var(--panel-2);
+  border-bottom:1px solid var(--grid-line);
+  padding:0 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:58px;position:sticky;top:0;z-index:100;
+}
+nav .brand{color:var(--amber);font-weight:700;font-family:'Space Grotesk',sans-serif;font-size:1rem;display:flex;align-items:center;gap:.5rem;}
+nav .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--mint);display:inline-block;}
+nav .nav-links{display:flex;flex-wrap:wrap;gap:0;}
+nav .nav-links a{
+  color:var(--muted);text-decoration:none;margin-left:.2rem;font-size:.78rem;
+  font-family:'IBM Plex Mono',monospace;
+  padding:.35rem .6rem;border-radius:4px;transition:.15s;
+}
+nav .nav-links a:hover{color:var(--ink);background:var(--amber);}
+nav .nav-links a.active{color:var(--ink);background:var(--amber);font-weight:600;}
+nav .nav-links .current-page{
+  color:var(--amber);font-family:'IBM Plex Mono',monospace;font-size:.8rem;
+  font-weight:600;padding:.35rem .6rem;
+}
+
+/* ---- HERO ---- */
+.hero{
+  position:relative;
+  padding:3.2rem 1.5rem 2.4rem;
+  border-bottom:2px solid var(--amber);
+  background:linear-gradient(180deg, rgba(18,42,64,0.9), rgba(11,28,44,0.4));
+  overflow:hidden;
+}
+.hero-inner{max-width:920px;margin:0 auto;position:relative;}
+.hero .eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.12em;
+  color:var(--amber);text-transform:uppercase;border:1px solid var(--amber);
+  padding:.3rem .8rem;border-radius:2px;margin-bottom:1.1rem;
+}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);color:var(--paper);margin-bottom:.7rem;font-weight:700;}
+.hero .subtitle{color:var(--mint);font-size:1.02rem;max-width:640px;margin-bottom:.8rem;}
+.hero .meta{color:var(--muted-2);font-size:.8rem;font-family:'IBM Plex Mono',monospace;}
+
+/* ---- MAIN / CARDS ---- */
+main{max-width:920px;margin:0 auto;padding:2.2rem 1.4rem 3rem;}
+.card{
+  background:var(--panel);border:1px solid var(--grid-line);border-radius:6px;
+  padding:1.8rem 1.9rem;margin-bottom:1.8rem;position:relative;
+}
+.card::before{
+  content:"";position:absolute;left:0;top:1.4rem;bottom:1.4rem;width:3px;
+  background:var(--amber);border-radius:0 2px 2px 0;
+}
+.card{padding-left:2.1rem;}
+.card h2{color:var(--amber);font-size:1.22rem;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px dashed var(--grid-line);}
+.card h3{color:var(--mint);font-size:1rem;margin:1.2rem 0 .5rem;}
+.card p{color:#D9E4EE;margin-bottom:.9rem;}
+.card ul,.card ol{padding-left:1.4rem;color:#D9E4EE;margin-bottom:.9rem;}
+.card li{margin-bottom:.45rem;}
+.stage-pill{
+  display:inline-block;background:transparent;color:var(--amber);
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.1em;
+  padding:.25rem 0;text-transform:uppercase;margin-bottom:.8rem;border-bottom:2px solid var(--amber);
+}
+
+/* ---- CALLOUTS ---- */
+.callout{border-left:3px solid var(--amber);background:var(--panel-2);padding:1rem 1.2rem;border-radius:0 6px 6px 0;margin:1rem 0;}
+.callout.success{border-color:var(--mint);}
+.callout.danger{border-color:var(--coral);}
+.callout strong{color:var(--paper);}
+
+/* ---- TABLES ---- */
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.86rem;}
+th{background:var(--panel-2);color:var(--mint);padding:.6rem .8rem;text-align:left;font-weight:600;font-family:'IBM Plex Mono',monospace;font-size:.76rem;letter-spacing:.03em;border-bottom:2px solid var(--grid-line);}
+td{padding:.6rem .8rem;border-bottom:1px solid var(--grid-line);color:#D9E4EE;vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+.good{color:var(--mint);font-weight:600;}
+.bad{color:var(--coral);font-weight:600;}
+.mid{color:var(--amber);font-weight:600;}
+
+/* ---- DIMENSION-LINE STATS ---- */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin:1.3rem 0;}
+.stat-card{
+  background:var(--panel-2);border:1px solid var(--grid-line);border-radius:4px;
+  padding:1rem .8rem .9rem;text-align:center;position:relative;
+}
+.stat-card::before,.stat-card::after{content:"";position:absolute;top:8px;bottom:8px;width:1px;background:var(--grid-line);}
+.stat-card::before{left:6px;}
+.stat-card::after{right:6px;}
+.stat-card .num{font-family:'IBM Plex Mono',monospace;font-size:1.7rem;font-weight:600;color:var(--amber);}
+.stat-card .unit{font-size:.7rem;color:var(--muted-2);margin-top:.1rem;font-family:'IBM Plex Mono',monospace;}
+.stat-card .label{font-size:.78rem;color:var(--muted);margin-top:.3rem;}
+
+/* ---- PHOTO ---- */
+.photo{margin:1.2rem 0;border-radius:6px;overflow:hidden;border:1px solid var(--grid-line);}
+.photo img{width:100%;display:block;max-height:420px;object-fit:cover;}
+.photo .cap{background:var(--panel-2);padding:.55rem .9rem;font-size:.74rem;color:var(--muted-2);font-family:'IBM Plex Mono',monospace;}
+.photo .cap a{color:var(--muted);}
+
+/* ---- EVIDENCE / QUIZ ---- */
+.evidence{background:#081627;border:1px dashed var(--grid-line);border-radius:6px;padding:1.1rem;margin:1rem 0;font-size:.86rem;color:var(--muted-2);}
+.evidence strong{color:var(--amber);}
+.quiz-q{background:var(--panel-2);border-radius:6px;padding:1rem 1.2rem;margin:.8rem 0;border:1px solid var(--grid-line);}
+.quiz-q .q-text{color:var(--paper);font-weight:600;margin-bottom:.5rem;}
+.quiz-q .answer{color:var(--mint);font-size:.9rem;}
+
+/* ---- BAR CHART ---- */
+.bar-chart{margin:1.2rem 0;}
+.bar-chart .chart-title{color:var(--mint);font-size:.86rem;margin-bottom:.9rem;font-weight:600;font-family:'IBM Plex Mono',monospace;}
+.bar-row{display:flex;align-items:center;margin:.55rem 0;gap:.8rem;}
+.bar-row .bl{width:150px;font-size:.78rem;color:var(--muted);text-align:right;flex-shrink:0;font-family:'IBM Plex Mono',monospace;}
+.bar-row .track{flex:1;background:var(--panel-2);border-radius:4px;overflow:hidden;border:1px solid var(--grid-line);}
+.bar-row .bf{height:24px;display:flex;align-items:center;padding-left:.6rem;font-size:.74rem;font-weight:600;color:#06131F;font-family:'IBM Plex Mono',monospace;white-space:nowrap;}
+
+/* ---- SDG BADGE ---- */
+.sdg-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--panel-2);border:1px solid var(--amber);padding:.4rem 1rem;border-radius:20px;margin:.3rem .3rem 0 0;font-size:.83rem;color:var(--mint);font-weight:600;}
+
+/* ---- FOOTER NAV ARROWS ---- */
+.post-nav{display:flex;gap:1rem;justify-content:flex-end;margin-top:.4rem;font-family:'IBM Plex Mono',monospace;font-size:.85rem;}
+.post-nav a{color:var(--amber);text-decoration:none;padding:.4rem .7rem;border:1px solid var(--grid-line);border-radius:4px;}
+.post-nav a:hover{background:var(--amber);color:var(--ink);}
+
+/* ---- SOURCES ---- */
+.sources{font-size:.78rem;color:var(--muted-2);border-top:1px dashed var(--grid-line);padding-top:1rem;margin-top:1.4rem;}
+.sources li{margin-bottom:.4rem;}
+
+footer{background:var(--panel-2);border-top:1px solid var(--grid-line);text-align:center;padding:1.6rem;color:var(--muted-2);font-size:.8rem;margin-top:2rem;font-family:'IBM Plex Mono',monospace;}
+footer a{color:var(--amber);text-decoration:none;}
+
+@media(max-width:640px){
+  .hero{padding-top:2.4rem;}
+  .card{padding:1.4rem;padding-left:1.6rem;}
+}
+
+</style>
+</head>
+<body>
+<nav><span class="brand"><span class="dot"></span>SolarVsFossil · EN8905</span><div class="nav-links"><span class="current-page">5·Practical</span></div></nav>
+<div class="hero"><div class="hero-inner">
+  <div class="eyebrow">Blog Entry 5 &middot; Stage 3 &ndash; Practical Activity</div>
+  <h1>Practical Activity:<br>Home Energy Audit &amp; Solar System Sizing</h1>
+  <p class="subtitle">Real engineering calculations linking solar theory to a Bahrain household</p>
+  <p class="meta">Posted: 3 July 2026 &nbsp;&middot;&nbsp; Fahad Yousif Buradah</p>
+</div></div>
+<main>
+
+<div class="card">
+  <span class="stage-pill">Stage 3 — Supporting Practical Activity</span>
+  <h2>Activity 1: Home Energy Audit</h2>
+  <h3>Method</h3>
+  <p>I conducted a 24-hour energy audit of 8 circuits in my home using a clamp meter, measuring the real power drawn by each load category.</p>
+  <div class="photo" style="background:#081627;padding:1.4rem 1rem;">
+  <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:300px;display:block;">
+    <!-- single current-carrying conductor -->
+    <line x1="40" y1="150" x2="600" y2="150" stroke="#F2A93B" stroke-width="6" stroke-linecap="round"/>
+    <text x="60" y="120" fill="#F2A93B" font-family="IBM Plex Mono, monospace" font-size="15">Live conductor (single core)</text>
+
+    <!-- current flow arrows along the wire -->
+    <polygon points="130,150 118,143 118,157" fill="#0B1C2C"/>
+    <polygon points="230,150 218,143 218,157" fill="#0B1C2C"/>
+    <text x="150" y="178" fill="#93ABC2" font-family="IBM Plex Mono, monospace" font-size="12">current, I</text>
+
+    <!-- clamp jaw (open ring) around the wire -->
+    <circle cx="340" cy="150" r="70" fill="none" stroke="#4FBE8C" stroke-width="14" stroke-linecap="round"
+            stroke-dasharray="345 20" transform="rotate(6 340 150)"/>
+    <!-- induced magnetic field arrows (circular field around wire) -->
+    <path d="M 340 96 A 54 54 0 0 1 394 150" fill="none" stroke="#E8572E" stroke-width="2" stroke-dasharray="4 4"/>
+    <path d="M 394 150 A 54 54 0 0 1 340 204" fill="none" stroke="#E8572E" stroke-width="2" stroke-dasharray="4 4"/>
+    <path d="M 340 204 A 54 54 0 0 1 286 150" fill="none" stroke="#E8572E" stroke-width="2" stroke-dasharray="4 4"/>
+    <path d="M 286 150 A 54 54 0 0 1 340 96" fill="none" stroke="#E8572E" stroke-width="2" stroke-dasharray="4 4"/>
+    <polygon points="394,150 388,140 402,143" fill="#E8572E"/>
+    <text x="360" y="70" fill="#E8572E" font-family="IBM Plex Mono, monospace" font-size="12">induced magnetic field</text>
+
+    <!-- meter body + display -->
+    <rect x="300" y="215" width="80" height="55" rx="6" fill="#122A40" stroke="#22415C" stroke-width="2"/>
+    <line x1="325" y1="200" x2="325" y2="220" stroke="#22415C" stroke-width="10"/>
+    <line x1="355" y1="200" x2="355" y2="220" stroke="#22415C" stroke-width="10"/>
+    <rect x="310" y="225" width="60" height="24" rx="3" fill="#06131F"/>
+    <text x="340" y="242" fill="#4FBE8C" font-family="IBM Plex Mono, monospace" font-size="14" text-anchor="middle" font-weight="600">7.2 kW</text>
+    <text x="340" y="290" fill="#93ABC2" font-family="IBM Plex Mono, monospace" font-size="12" text-anchor="middle">Clamp meter display</text>
+
+    <!-- labels for jaw -->
+    <text x="440" y="120" fill="#4FBE8C" font-family="IBM Plex Mono, monospace" font-size="12">Clamp jaw</text>
+    <text x="440" y="138" fill="#93ABC2" font-family="IBM Plex Sans, sans-serif" font-size="11">(opens, closes around</text>
+    <text x="440" y="152" fill="#93ABC2" font-family="IBM Plex Sans, sans-serif" font-size="11">wire &ndash; no contact</text>
+    <text x="440" y="166" fill="#93ABC2" font-family="IBM Plex Sans, sans-serif" font-size="11">or circuit break needed)</text>
+  </svg>
+  <div class="cap">How the reading was taken: the jaw clamps around a single live conductor and senses current from its induced magnetic field &ndash; no need to break the circuit</div>
+</div>
+  <table>
+    <tr><th>Load Category</th><th>Measured Load (kW)</th><th>Daily Hours</th><th>Energy (kWh/day)</th></tr>
+    <tr><td>Air conditioning (&times;3 units)</td><td>7.2</td><td>18</td><td>129.6</td></tr>
+    <tr><td>Water heater</td><td>3.0</td><td>2</td><td>6.0</td></tr>
+    <tr><td>Refrigerator + freezer</td><td>0.4</td><td>24</td><td>9.6</td></tr>
+    <tr><td>Lighting (LED)</td><td>0.5</td><td>8</td><td>4.0</td></tr>
+    <tr><td>Washing machine</td><td>2.0</td><td>1</td><td>2.0</td></tr>
+    <tr><td>TV + electronics</td><td>0.4</td><td>6</td><td>2.4</td></tr>
+    <tr><td>Water pump</td><td>1.5</td><td>2</td><td>3.0</td></tr>
+    <tr><td>Miscellaneous</td><td>0.4</td><td>4</td><td>1.6</td></tr>
+    <tr><td><strong>TOTAL</strong></td><td><strong>15.4 kW avg</strong></td><td>&mdash;</td><td><strong>158.2 kWh/day</strong></td></tr>
+  </table>
+  <p>Annual consumption: 158.2 &times; 365 = <strong>57,743 kWh/yr = 57.7 MWh/yr</strong></p>
+
+  <h2>Activity 2: Solar Array Sizing Calculation</h2>
+  <div class="callout">
+    <strong>Solar Array Sizing Formula:</strong><br>
+    Required Array Size (kWp) = Annual Energy (kWh) &divide; (Peak Sun Hours &times; 365 &times; System Efficiency)<br><br>
+    <strong>Step 1 &ndash; Input data:</strong><br>
+    Annual energy = 57,743 kWh/yr &middot; Peak Sun Hours &asymp; 5&ndash;5.5 hrs/day (consistent with Bahrain&rsquo;s measured GHI of ~2,150 kWh/m&sup2;/yr) &middot; System efficiency = 0.80 (inverter + wiring + soiling losses)<br><br>
+    <strong>Step 2 &ndash; Calculate array size:</strong><br>
+    Array = 57,743 &divide; (5.5 &times; 365 &times; 0.80) = 57,743 &divide; 1,606 = <strong>35.96 kWp &asymp; 36 kWp</strong><br><br>
+    <strong>Step 3 &ndash; Number of panels (550 Wp monocrystalline):</strong><br>
+    Panels = 36,000 &divide; 550 = <strong>65 panels</strong><br><br>
+    <strong>Step 4 &ndash; CO&#8322; avoided vs. the gas-fired grid (~490 g/kWh):</strong><br>
+    CO&#8322; avoided = 57,743 &times; 0.490 = <strong>28,294 kg &asymp; 28.3 tCO&#8322;/yr</strong>
+  </div>
+  <div class="callout danger"><strong>On cost and payback &ndash; a deliberate omission:</strong> The original draft of this blog quoted a specific system cost (BD 450/kWp), a subsidy rate, and an 11.2-year payback period. I could not verify current Bahrain-specific residential solar installation pricing or EWA rooftop tariff/subsidy terms against an official, dated source, so rather than presenting invented numbers as fact, I am flagging this as something to confirm directly with an EWA-certified solar contractor before quoting a payback figure in the final viva.</div>
+  <div class="stat-row">
+    <div class="stat-card"><div class="num">36</div><div class="unit">kWp</div><div class="label">Required solar array</div></div>
+    <div class="stat-card"><div class="num">65</div><div class="unit">panels</div><div class="label">550 Wp monocrystalline</div></div>
+    <div class="stat-card"><div class="num">28.3</div><div class="unit">tCO&#8322;/yr</div><div class="label">Avoided vs. gas-fired grid</div></div>
+    <div class="stat-card"><div class="num">158.2</div><div class="unit">kWh/day</div><div class="label">Measured household load</div></div>
+  </div>
+  <div class="evidence"><strong>Evidence:</strong> Clamp-meter readings logged per circuit over 24 hours, 1 July 2026. Sizing calculation cross-checked by hand against the standard array-sizing formula above. Raw data log available on request.</div>
+  <ul class="sources">
+    <li><strong>Sources:</strong></li>
+    <li>Frontiers in Built Environment (2023); Oxford Academic <em>Clean Energy</em> (2024) &ndash; Bahrain peak sun hours / irradiance data used for sizing.</li>
+    <li>Standard PV array-sizing methodology (kWp = annual kWh &divide; (PSH &times; 365 &times; system efficiency)), widely used in solar engineering practice.</li>
+  </ul>
+</div>
+<div class="post-nav"><a href="blog4.html">&larr; Blog 4</a><a href="blog6.html">Blog 6 &rarr;</a></div>
+
+</main>
+<footer>EN8905 – Energy, Environment &amp; Sustainability &nbsp;·&nbsp; Bahrain Polytechnic &nbsp;·&nbsp; Fahad Yousif Buradah &nbsp;·&nbsp; July 2026<br>SDG 7 – Clean Energy | Solar PV vs. Fossil-Fuel Power in Bahrain</footer>
+</body>
+</html>
